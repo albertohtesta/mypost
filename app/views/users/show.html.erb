@@ -1,0 +1,35 @@
+<%= render 'shared/content_title', title: 'Perfil de usuario' %>
+<div class="container">
+	<dl class= "dl-horizontal">
+		<dt>Usuario:</dt>
+		  <dd><%= @user.username %></dd>
+		<dt>Time Zone:</dt>
+		  <dd><%= @user.time_zone %></dd>
+	</dl>
+	<h5>Actividad de: <%= @user.username %></h5>
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<% if params[:tab].nil?  %>
+			  <%= link_to "Posts (#{@user.posts.size})", user_path(@user), class: 'nav-link disabled' %>
+			<% else %>
+			  <%= link_to "Posts (#{@user.posts.size})", user_path(@user), class: 'nav-link' %>
+			<% end %>
+		</li>
+		<li class="nav-item">
+		  <% if params[:tab] == 'comments' %>
+		  	<%= link_to "Comentarios (#{@user.comments.size})", user_path(@user, tab: 'comments'), class: 'nav-link disabled' %>
+		  	<% else %>
+		  	  <%= link_to "Comentarios (#{@user.comments.size})", user_path(@user, tab: 'comments'), class: 'nav-link' %>
+		  <% end %>
+		</li>
+	</ul>
+	<% if params[:tab].nil? %>
+	  <% @user.posts.each do |post| %>
+	    <%= render 'posts/post', post: post %>
+	  <% end %>
+	<% elsif %>
+	  <% @user.comments.each do |comment| %>
+	    <%= render 'comments/comment', comment: comment %>
+	  <% end %>
+	<% end %>
+</div>

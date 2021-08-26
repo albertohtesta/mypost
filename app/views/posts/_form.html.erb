@@ -1,0 +1,25 @@
+<%= render 'shared/errors', obj: @post %>
+<div class="container">
+	<%= form_for @post do |f|  %>
+      <div class="mb-3">
+	  	<%= f.label :title, 'Titulo', class: 'form-label' %>
+	  	<%= f.text_field :title, class: 'form-control' %>
+	  </div>
+	  <div class="mb-3">
+	  	<%= f.label :url, 'URL', class: 'form-label' %>
+	  	<%= f.text_field :url, class: 'form-control' %>
+	  </div>
+	  <div class="mb-3">
+	  	<%= f.label :description, 'Descripción', class: 'form-label' %>
+	  	<%= f.text_field :description, class: 'form-control' %>
+	  </div>
+	  <div class="mb-3">
+	  	<%= f.label 'Categorias', class: 'form-label' %>
+	  	<br>
+	  	<%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+	  	  <% cb.label(class: 'form-check-label inline ml-3') {cb.check_box(class: 'form-check-input') + cb.text} %>
+	  	<% end %>
+	  </div>
+	  <%= f.submit (@post.new_record? ? 'Registrar': 'Actualizar'), class: 'btn btn-primary' %>
+	<% end %>
+</div>

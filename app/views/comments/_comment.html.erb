@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row mb-2 justify-content-center"> <!-- init row -->
+    <div class="col">
+      <div class="card-body bg-light text-center">
+        <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
+          <i class="fas fa-arrow-up"></i>
+        <% end %>
+
+        </br>
+        <span id='comment_<%= comment.id%>_votes'><%= comment.total_votes %> votes</span>
+        </br>
+        
+        <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
+          <i class="fas fa-arrow-down"></i>
+        <% end %>
+        
+      </div>
+    </div> <!-- col-2 -->
+
+	<div class="col-10">
+		<% show_post ||= false %>
+		<div class="card-body bg-light">
+			<em>"<%= comment.body %>"</em>
+			<% if show_post %>
+			  on <%= link_to comment.post.title, post_path(comment.post) %>
+			<% end %>
+			<br>
+			<span class='quiet'> posteado por </span><%= link_to comment.creator.username, user_path(comment.creator) %>
+			<small>
+				<span>at <%= display_datetime(comment.created_at) %></span>
+			</small>
+		</div>
+	</div>
+
+  </div>
+</div>	

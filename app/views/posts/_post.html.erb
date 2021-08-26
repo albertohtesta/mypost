@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row mb-2 justify-content-center">
+    <div class="col">
+      <div class="card-body bg-light text-center">
+        <%= link_to vote_post_path(post, vote: true), method: 'post' do %>
+          <i class="fas fa-arrow-up"></i>
+        <% end %>
+
+        </br>
+        <span id='post_<%= post.slug%>_votes'><%= post.total_votes %> votes</span>
+        </br>
+        
+        <%= link_to vote_post_path(post, vote: false), method: 'post' do %>
+          <i class="fas fa-arrow-down"></i>
+        <% end %>
+        
+      </div>
+    </div> <!-- col-2 -->
+    <div class="col-10"> 
+      <div class="card">
+        <div class="card-header">
+          <%= render post.categories %>
+          <h4><%= link_to post.title, fix_url(post.url) %></h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= post.description %></h5>
+          <p class="card-text">posted by </span><%= link_to post.creator.username, user_path(post.creator) %>
+            <p><span class="quiet">
+                <small>
+                  <span>at <%= post.created_at %></span>
+                  <span>at <%= link_to("#{post.comments.size} comentarios", post_path(post)) %></span>
+                </small>
+               </span>
+            </p>
+          </p>
+        </div>
+      </div>
+    </div>  <!-- col-10 -->
+  </div>  
+</div>

@@ -1,0 +1,15 @@
+<%= render 'shared/content_title', title: 'Introduce tu pin para entrar' %>
+<div class="container">
+	<p>
+		Tu cuenta esta bloqueda. Recibiras un mensaje de texto con un numero de pin.
+		Indica tu numero de pin para desbloquear tu cuenta y proceder.
+	</p>
+
+		<%= form_tag '/pin' do %>
+		  	 <div class="mb-3">
+		  	 	<%= label_tag :pin, 'Pin number', class: 'form-label' %>
+		  	 	<%= text_field_tag :pin, params[:pin] || '', class: 'form-control'%>
+		  	 </div>
+		  	 <%= submit_tag 'Desbloquea tu cuenta', class: 'btn btn-primary' %>
+		<% end %>
+</div>
