@@ -1,0 +1,29 @@
+%section#top-header.row
+  %nav.navbar.navbar-expand-lg.navbar-light
+    .container-fluid
+      %a.navbar-brand{:href => "#"} MyVideos
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          %li.nav-item
+            = link_to "Videos", home_path, class: 'nav-link'
+          %li.nav-item
+            = link_to "My Queue", my_queue_path, class: 'nav-link'
+          %li.nav-item
+            = link_to "People", people_path, class: 'nav-link'
+          %li.nav-item.dropdown
+            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+              Welcome #{current_user.full_name if current_user}
+            %ul.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+              %li
+                = link_to 'Invite a friend', new_invitation_path, class: 'dropdown-toogle negro'
+              %li
+                = link_to 'Logout', sign_out_path, class: 'dropdown-toogle negro'
+              %li
+                %hr.dropdown-divider/
+              %li
+                %a.dropdown-item{:href => "#"} Something else here
+        %form.d-flex
+          %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+          %button.btn.btn-outline-success{:type => "submit"} Search
