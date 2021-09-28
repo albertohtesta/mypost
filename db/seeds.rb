@@ -9,7 +9,7 @@ Video.destroy_all
 Category.destroy_all
 User.destroy_all
 Review.destroy_all
-#QueueItem.destroy_all
+QueueItem.destroy_all
 
 Category.create([{id: 1, name: "TV Commedies"}, {id: 2, name: "TV Dramas"}, {id: 3, name: "Reality TV"}])
 
@@ -56,5 +56,5 @@ Review.create(user: ghi, video: back6, content: "this is really nice movie!", ra
 Review.create(user: abc, video: fut6, content: "this is horrible movie!", rating: 3)
 Review.create(user: ghi, video: fut6, content: "this is horrible movie!", rating: 3)
 
-#QueueItem.create(user: xiaocui, video: back, position: 2)
-#QueueItem.create(user: xiaocui, video: fut, position: 1)
+QueueItem.create(user: abc, video: back, position: 2)
+QueueItem.create(user: xiaocui, video: fut, position: 1)
