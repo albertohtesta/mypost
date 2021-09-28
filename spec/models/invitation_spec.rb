@@ -5,6 +5,10 @@ describe Invitation do
   it { should validate_presence_of :email }
   it { should validate_presence_of :name }
 
+  it_behaves_like "tokenable" do
+    let(:object) {Fabricate(:user)}
+  end
+
   let!(:invitation) { Fabricate :invitation }
 
   it 'renders a token before saving to the db' do
