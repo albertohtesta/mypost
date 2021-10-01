@@ -10,6 +10,8 @@ Category.destroy_all
 User.destroy_all
 Review.destroy_all
 QueueItem.destroy_all
+Invitation.destroy_all
+Relationship.destroy_all
 
 Category.create([{id: 1, name: "TV Commedies"}, {id: 2, name: "TV Dramas"}, {id: 3, name: "Reality TV"}])
 
