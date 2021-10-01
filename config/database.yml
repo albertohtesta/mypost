@@ -84,3 +84,4 @@ production:
   database: misvideos_production
   username: misvideos
   password: <%= ENV['MISVIDEOS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
