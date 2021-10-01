@@ -14,7 +14,9 @@ class UsersController < ApplicationController
 	    @user = User.new(user_params)
 	    if @user.save     
 	      handle_invitation
-	      AppMailer.send_welcome_email(@user).deliver
+	      EmailJob.perform_later(@user)
+	      #AppMailer.send_welcome_email(@user).deliver
+
 =begin
 	      StripeWrapper::Charge.create({
 	        :amount => 999,
