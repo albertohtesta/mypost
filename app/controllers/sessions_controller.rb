@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 	def new
+
 	end
 
 	def create
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
 				login_user!(user)
 			end
 		else
-			flash[:error] = 'Error en usuario/contraseña'
+			flash[:alert] = 'Error en usuario/contraseña'
 			render :new
 		end
 	end
