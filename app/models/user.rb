@@ -33,10 +33,10 @@ class User < ActiveRecord::Base
 	end
 
 	def send_pin_to_twilio
-		account_sid = 'ACcbb3fb4fe736b9d7519519e7f231c721'
-		auth_token = 'eba4187b9378898b7627c05a84cb4690'
+		account_sid = Rails.application.credentials.dig(:twilio, :account_sid)
+		auth_token = Rails.application.credentials.dig(:twilio, :auth_token)
 		from = '+13187540386'
-		to = '+5217441776914'
+		to = "+521#{phone}"
 		client = Twilio::REST::Client.new(account_sid, auth_token)
 		#account = client.account
 		msg = "Hola por favor introduce el pin para continuar el login: #{self.pin}"
