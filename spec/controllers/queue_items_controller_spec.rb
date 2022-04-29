@@ -16,7 +16,7 @@ describe QueueItemsController do
       expect(response).to redirect_to sign_in_path
     end
     # este codigo hace lo mismo que el anterior
-    it_behaves_like "require_sign_in" do  # este spec esta en shared/examples.rb
+    it_behaves_like "require_sign_in" do # este spec esta en shared/examples.rb
       let(:action) {get :index}
     end
 

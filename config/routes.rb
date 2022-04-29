@@ -25,6 +25,10 @@ Rails.application.routes.draw do
 		end
 	end
 
+	namespace :admin do
+		resources :videos, only: [:new, :create]
+	end
+
 	resources :users, only: [:create, :show]
 	resources :sessions, only: [:create]
 	resources :category, only: :show

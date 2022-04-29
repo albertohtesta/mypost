@@ -7,7 +7,6 @@ describe Video do
 	it { should have_many (:reviews).order("created_at DESC")}
 end
 
-=begin este spec no funciona porque no encontr como resolver el problema con lo que devuelve el where
 describe Video do
 	#it { should belong_to(:category)}
 	#it { should validate_presence_of(:title)}
@@ -52,4 +51,3 @@ describe Video do
 	end
 end
 
-=end

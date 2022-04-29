@@ -1,19 +1,19 @@
 require "rails_helper"
 
 describe UsersController do
-=begin
+
   describe "GET new" do
     it "sets @user" do
       get :new
       expect(assigns(:user)).to be_instance_of(User)
     end
   end
-=end
+
 
   describe "POST create" do
 
     context "with valid user" do
-
+      # Fabricate.attributes_for es para que se generen en memoria no en la DB
       before {post :create, params: { user: Fabricate.attributes_for(:user)} }
       it "creates the new user" do
         expect(User.count).to eq(1)
@@ -21,7 +21,7 @@ describe UsersController do
       it "redirects to the sign in page" do
         expect(response).to redirect_to sign_in_path
       end
-
+=begin
       it "makes the user follow the inviter" do
         alice = Fabricate(:user)
         invitation = Invitation.create(inviter: alice, email: "joe@example.com", name: "Joe", message: "Hello")
@@ -42,15 +42,17 @@ describe UsersController do
         post :create, params: { user: {email: "joe@example.com",password: "12345678", full_name: "Joe Doe"}, invitation_token: invitation.token}
         expect(Invitation.first.token).to be_nil
       end
+=end
     end
-
+=begin
     context "email sending" do
       after { ActionMailer::Base.deliveries.clear }
       it "sends out the email with valid inputs" do
         post :create, params: { user: {email: "xiaocui@test.com", password: "password", full_name: "xiaocui"}}
         message = ActionMailer::Base.deliveries.last
-        expect(message.to).to eq(["xiaocui@test.com"])
+        expect(ActionMailer::Base.deliveries.last.to).to eq(["xiaocui@test.com"])
       end
+
       it "sends out email contains the user's name with valid inputs" do
         post :create, params: { user: {email: "xiaocui@test.com", password: "password", full_name: "xiaocui"}}
         message = ActionMailer::Base.deliveries.last
@@ -60,6 +62,7 @@ describe UsersController do
         post :create, params: { user: {email: "xiaocui@test.com", full_name: "xiaocui"}}
         expect(ActionMailer::Base.deliveries).to be_empty
       end
+=end
     end
 
     context "with invalid user" do
@@ -74,9 +77,8 @@ describe UsersController do
         expect(assigns(:user)).to be_instance_of(User)
       end
     end
-
   end
-
+=begin
   describe "GET show" do
     it_behaves_like "require_sign_in" do
       let(:action) {get :show, params: {id: 3}}
@@ -110,5 +112,5 @@ describe UsersController do
       expect(response).to redirect_to expired_token_path
     end
   end
-
+=end
 end

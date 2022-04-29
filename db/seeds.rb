@@ -17,7 +17,7 @@ Category.create([{id: 1, name: "TV Commedies"}, {id: 2, name: "TV Dramas"}, {id:
 
 fut1 = Video.create(title: "monk", description: "Space Travel!", cover_image_url: "/tmp/monk.jpg", category_id: 1)
 back1 = Video.create(title: "family guy", description: 'Time Travel!', cover_image_url: "/tmp/family_guy.jpg", category_id: 2)
-south1 = Video.create(title: "South Park", description: 'South Park', cover_image_url: "/tmp/south_park.jpg", category_id: 3)
+south1 = Video.create(title: "South Park", description: 'South Park', large_cover: "/tmp/monk_large.jpg", cover_image_url: "/tmp/south_park.jpg", category_id: 3)
 
 fut2 = Video.create(title: "monk2", description: "Space Travel!", cover_image_url: "/tmp/monk.jpg", category_id: 1)
 back2 = Video.create(title: "family guy2", description: 'Time Travel!', cover_image_url: "/tmp/family_guy.jpg", category_id: 2)
@@ -50,13 +50,13 @@ ghi = User.create(email: "alan@gmail.com", password: "12345", full_name: "Alan")
 
 Review.create(user: xiaocui, video: south7, content: "this is really nice movie!", rating: 5)
 Review.create(user: cui, video: south7, content: "this is really nice movie!", rating: 5)
-Review.create(user: xiaocui, video: fut7, content: "this is horrible movie!", rating: 3)
-Review.create(user: cui, video: fut7, content: "this is horrible movie!", rating: 3)
+Review.create(user: xiaocui, video: fut7, content: "this is nice movie!", rating: 3)
+Review.create(user: cui, video: fut7, content: "this is nice movie!", rating: 3)
 
 Review.create(user: abc, video: south6, content: "this is really nice movie!", rating: 5)
 Review.create(user: ghi, video: back6, content: "this is really nice movie!", rating: 5)
-Review.create(user: abc, video: fut6, content: "this is horrible movie!", rating: 3)
-Review.create(user: ghi, video: fut6, content: "this is horrible movie!", rating: 3)
+Review.create(user: abc, video: fut6, content: "this is nice movie!", rating: 3)
+Review.create(user: ghi, video: fut6, content: "this is nice movie!", rating: 3)
 
 QueueItem.create(user: abc, video: back, position: 2)
 QueueItem.create(user: xiaocui, video: fut, position: 1)

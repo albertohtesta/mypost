@@ -1,7 +1,7 @@
 %section#top-header.row
   %nav.navbar.navbar-expand-lg.navbar-light
     .container-fluid
-      %a.navbar-brand{:href => "/"} MyVideos
+      %a.navbar-brand{:href => "/"} My Videos
       %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
@@ -24,6 +24,6 @@
                 %hr.dropdown-divider/
               %li
                 %a.dropdown-item{:href => "#"} Something else here
-        %form.d-flex
-          %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+        =form_tag search_videos_path, class: 'd-flex' do
+          %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search", :type => "search", :name => 'search'}/
           %button.btn.btn-outline-success{:type => "submit"} Search
