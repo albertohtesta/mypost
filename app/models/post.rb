@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  PER_PAGE = 3
+  PER_PAGE = 4
   include Voteable
   include Sluggable
   default_scope { order('created_at ASC')}
